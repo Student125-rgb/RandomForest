@@ -31,5 +31,8 @@ def results():
         return redirect(url_for('index'))    # إذا لم توجد نتائج، ارجع للصفحة الرئيسية
     return render_template('index.html', results=results)
 
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    # استخدام PORT من البيئة و0.0.0.0 للنشر على Render
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port, debug=True)
